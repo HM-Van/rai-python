@@ -1,0 +1,36 @@
+# Create and work with conda env: adapted from https://rllab.readthedocs.io/en/latest/user/installation.html
+
+# Install anaconda 2.7 : https://docs.anaconda.com/anaconda/install/linux/
+cd /tmp
+sudo apt install curl
+curl -O https://repo.continuum.io/archive/Anaconda2-2018.12-Linux-x86_64.sh
+sha256sum Anaconda2-2018.12-Linux-x86_64.sh
+bash Anaconda2-2018.12-Linux-x86_64.sh
+
+# Create conda environment
+conda update -n base -c defaults conda
+conda env create -f RAI.yml # on ubuntu 16.04
+conda env create -f RAI2.yml # on ubuntu 18.04
+conda info -e
+
+# Activate conda environment
+conda activate RAI
+
+# Install further dependencies via pip
+conda list
+pip install --upgrade pip
+pip install -r requirements.txt
+
+pip list  # show packages installed within the virtual environment
+
+# Run python script 
+python3 ./v_MA/filename.py --arguments
+
+# Tensorboard
+tensorboard --logdir=./v_MA/logs
+
+# Deactivate conda environment
+conda deactivate
+source deactivate
+
+

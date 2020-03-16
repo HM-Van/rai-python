@@ -1,0 +1,56 @@
+LGP_Tree::LGP_Tree(int verb)
+  : verbose(2), numSteps(0) {
+  dataPath <<"z." <<rai::date2() <<"/";
+  dataPath = rai::getParameter<rai::String>("LGP_dataPath", dataPath);
+  if(verb>0){
+    rai::system(STRING("mkdir -p " <<dataPath));
+    rai::system(STRING("rm -Rf " <<dataPath <<"vid  &&  rm -f " <<dataPath <<"*"));
+  }
+
+  OptLGPDataPath = dataPath;
+  if(!filNodes) filNodes = new ofstream(dataPath + "nodes");
+
+  collisions = rai::getParameter<bool>("LGP/collisions", true);
+  displayTree = rai::getParameter<bool>("LGP/displayTree", false);
+
+  verbose = rai::getParameter<int>("LGP/verbose", 2);
+  if(verbose>0) fil.open(dataPath + "optLGP.dat"); //STRING("z.optLGP." <<rai::date() <<".dat"));
+
+  cameraFocus = rai::getParameter<arr>("LGP/cameraFocus", {});
+}
+
+LGP_Tree::LGP_Tree(const rai::Configuration& _kin, const char* folFileName, bool print, int verb) : LGP_Tree(verb) {
+
+
+
+LGP_Tree(int verb=1);
+LGP_Tree(const rai::Configuration& _kin, const char* folFileName="fol.g", bool print=true, int verb=1);
+
+
+void FOL_World::addTerminalRule(const char* literals, int verbose) {
+void addTerminalRule(const char* literals, int verbose=1);
+
+
+.def("lgp", [](ry::Config& self, const std::string& folFileName, bool print, int verbose) {
+  ry::RyLGP_Tree lgp;
+  lgp.lgp = make_shared<LGP_Tree_Thread>(self.get(), folFileName.c_str(), print, verbose);
+  return lgp;
+},
+"create an LGP solver",
+pybind11::arg("folFileName"),
+pybind11::arg("print")=true,
+pybind11::arg("verbose")=1
+    )
+
+
+.def("addTerminalRule", [](ry::RyLGP_Tree& self, const char* precondition, int verbose) {
+  self.lgp->fol.addTerminalRule(precondition, verbose);
+}, "", pybind11::arg("precondition"),
+pybind11::arg("verbose")=1)
+
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+conda deactivate
+git clone https://github.com/HM-Van/rai-python.git
+git config --file=.gitmodules submodule.rai-robotModels.url https://github.com/MarcToussaint/rai-robotModels.git
+git config --file=.gitmodules submodule.rai.url https://github.com/HM-Van/rai.git
+git submodule init
+conda deactivate
+cd rai-python/
+git config --file=.gitmodules submodule.rai-robotModels.url https://github.com/MarcToussaint/rai-robotModels.git
+git config --file=.gitmodules submodule.rai.url https://github.com/HM-Van/rai.git
+git submodule init
+cd rai
+git status
+git remote -v
+git fetch upstream/master
+git remote add https://github.com/MarcToussaint/rai-python.git
+git remote add upstream https://github.com/MarcToussaint/rai-python.git
+git status
+git remote -v
+cd ..
+git add rai
+cd rai
+git status
+git remote -v
+cd ..
+git submodule update
+git status
+cd rai
+git status
+git remote -v
+cd ..
+git status
+cd rai
+git status
+git add --all
+git status
+git remote -v
+git commit -m "test pathStep bounds, adapt console output"
+git status
+git push origin master
+git checkout master
+git branch v_RAI 24523c
+
+git status
+git checkout v_RAI
+git status
+git push origin v_RAI
+git status
+cd ..
+make -j4
+cd v_MA/
+conda activate RAI
+python test_file.py --waitTime=1
+cd ..
+git status
+git add --all
+git status
+git commit -m "current status v_MA"
+git status
+git push origin master
