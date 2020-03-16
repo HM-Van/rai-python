@@ -24,7 +24,7 @@ cd rai-python
 
 # skip the following if you have ssh authorization to github
 git config --file=.gitmodules submodule.rai.url https://github.com/HM-Van/rai.git
-git config --file=.gitmodules submodule.v\_MA.url https://github.com/HM-Van/v_MA.git
+git config --file=.gitmodules submodule.v_MA.url https://github.com/HM-Van/v_MA.git
 git config --file=.gitmodules submodule.rai-robotModels.url https://github.com/MarcToussaint/rai-robotModels.git
 
 git submodule init
