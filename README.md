@@ -51,15 +51,16 @@ make -j4                     # builds libs and tests
 
 Also test the cpp versions:
 ```
-cd cpp/pickAndPlace
+cd rai/test/LGP/pickAndPlace
 make
 ./x.exe
 ```
 
-To enable bullet, before you compile rai-python, first install bullet locally following
+To enable the PhysX or bullet physical enginges, before you compile rai-python, first install bullet locally following
 https://github.com/MarcToussaint/rai-maintenance/blob/master/help/localSourceInstalls.md
 Then, in 'rai-python/', call
 ```
+echo "PHYSX = 1" >> config.mk
 echo "BULLET = 1" >> config.mk
 ```
 Then compile.
@@ -77,7 +78,6 @@ This avoids a full make clean -- but if that doesn't work, hopefully `make clean
 ## Tutorials
 
 * [Python examples](docs/)
-* [A few cpp examples](cpp/)
 
 ## Older/messy docs
 

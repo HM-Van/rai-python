@@ -1,4 +1,5 @@
 /config.mk
+/build
 
 %% compile temporaries
 *.o
@@ -135,6 +136,7 @@ srv_gen
 *Feedback.msg
 *Goal.msg
 *Result.msg
+<<<<<<< HEAD
 
 %% rai calc
 v_MA/z.*
@@ -146,3 +148,5 @@ Constrained_Hybrid_Algorithm.pyproj
 v_MA/dataset/20200104-153655_mixed0/
 v_MA/dataset_new/20200203-104114_final
 thesis/
+=======
+>>>>>>> upstream/master

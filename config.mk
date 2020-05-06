@@ -9,7 +9,7 @@
 # only UNCOMMENT some of the following lines
 # (they are already set =1 in the components that refer to them)
 
-OPTIM = fast
+OPTIM = fast_debug
 FCL = 0
 ODE = 0
 PHYSX = 0
@@ -21,3 +21,7 @@ OPENCV = 0
 GTK = 0
 ROS = 0
 ROS_VERSION = kinetic
+
+ifeq ($(OUTPUT),x.exe)
+PHYSX = 1
+endif

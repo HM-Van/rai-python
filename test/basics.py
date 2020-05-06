@@ -2,6 +2,7 @@
 
 import sys
 sys.path.append('../ry')
+sys.path.append('../build')
 from libry import *
 
 K = Config()
